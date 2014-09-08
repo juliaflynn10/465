@@ -5,16 +5,18 @@
 
 #!/usr/bin/env ruby
 
-:star = 50."*"
-:dash = 50."-"
-:tab  = 2." "
+:stars = 50."*"
+:dashes = 50."-"
+:tabs  = 2." "
 
 
 key = gets
-
 file = Array.new
+file = (`find .`).split
 
-file.each do |path|
-  path = file.insert(`find . #{key}`)
-  puts file.each 
+file.each do
+  path.match(key)
+  puts "Files with content that matches #{key}"
+  puts file.each
+  puts :stars
 end
