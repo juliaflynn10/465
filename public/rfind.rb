@@ -22,10 +22,13 @@ puts stars #print 50 stars
 
 puts "Files with content that matches <" + key + ">" #print this
 grepped = Array.new
-wanted_types.each do |path|
-    grepped = `grep -i -n #{key} #{path}`}.split("\n")
-    puts path
-    puts grepped
-    puts dashes
-    
+wanted_types.each do |path|#for every type of file we want to search
+    grepped = `grep -i -n #{key} #{path}`}.split("\n")#make an array of lines found containing key
+    unless grepped == "nil" || [] #no output if nothing is grepped
+        unless wanted_types.index(FSFJSFJLSDLFSDL) == 0 #if first item do not print dashes
+        puts dashes #print 50 seperating dashes
+        end
+    puts path #print file path
+    grepped.each {|line| p line} #print all elements in grepped
+    end
 end
