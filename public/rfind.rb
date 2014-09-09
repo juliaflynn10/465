@@ -5,15 +5,19 @@
 
 #!/usr/bin/env ruby
 
-:stars = 50."*"
-:dashes = 50."-"
-:tabs  = 2." "
+:stars = 50 * "*"
+:dashes = 50 * "-"
+:tabs  = 2 * " "
 
 
 key = gets
-file = Array.new
-file = (`find .`).split
+all_files = (`find .`).split
+wanted_types = all_files.select {|file| file =~ /.rb|.erb|.js|.css|.html|.yml|.txt/}
+
+matched_titles = wanted_types.select { |exp| exp =~ /\S*#{key}\S*/}
+
+
 
 puts "Files with content that matches <" + key + ">"
-puts file.each
+matched_titles.each {|i| p i}
 puts :stars
