@@ -11,6 +11,7 @@ tabs  = 2 * " "
 
 
 key = gets #store searchable word
+key.delete "\n" + "\"" + "\'" #delete unwanted characters from gets
 all_files = (`find .`).split #find all files (with their paths) store as strings rather than array
 
 puts "Files with names that matches <" + key + ">"
@@ -22,15 +23,15 @@ puts stars #print 50 stars
 
 puts "Files with content that matches <" + key + ">" #print this
 grepped = Array.new
-first = Boolean.new(true)
+first_grepped = Boolean.new(true)
 wanted_types.each do |path|#for every type of file we want to search
     grepped = `grep -i -n #{key} #{path}`.split("\n")#make an array of lines found containing key
     unless grepped.empty? #no output if nothing is grepped
-        unless first #if first item do not print dashes
-        puts dashes #print 50 seperating dashes
+        unless first_grepped #if first item do not print dashes
+            puts dashes #print 50 seperating dashes
         end
-    puts path #print file path
-    grepped.each {|line| p line} #print all elements in grepped
+        puts path #print file path
+        grepped.each {|line| p line} #print all elements in grepped
     end
-    first = false
+    first_grepped = false
 end
