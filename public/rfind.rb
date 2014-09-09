@@ -21,4 +21,11 @@ puts stars #print 50 stars
 
 
 puts "Files with content that matches <" + key + ">" #print this
-grepped = wanted_types.each {|path| `grep -i -n #{key} #{path}`}.split("\n")
+grepped = Array.new
+wanted_types.each do |path|
+    grepped = `grep -i -n #{key} #{path}`}.split("\n")
+    puts path
+    puts grepped
+    puts dashes
+    
+end
