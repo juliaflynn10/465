@@ -19,7 +19,8 @@ elsif word_length > 20
     word_length = 20
 end
 
-full_dic.map!{|x| if x.size == word_length}
+full_dic.map!{|x| x if x.size == word_length}.compact
+
 
     
 
