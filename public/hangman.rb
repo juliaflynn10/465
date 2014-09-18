@@ -45,6 +45,7 @@ while failed.length < TOTAL_GUESSES && passed.length < word_length
             offset = dic[0].index(letter, offset + 1)
         end
     else
+        dic.map!{|word| word if !word.include?(letter)}.compact!
         failed.push(letter)
     end
 
@@ -57,8 +58,8 @@ while failed.length < TOTAL_GUESSES && passed.length < word_length
         end
         print " "
     end
-    puts "INCORRECT GUESSES: " + failed_guesses
-    puts "MYSTERY WORD: " + passed_guesses
+    puts "INCORRECT GUESSES: " + failed_guesses.to_s
+    puts "MYSTERY WORD: " + passed_guesses.to_s
 end
 
 if passed_guesses.length == word_length
