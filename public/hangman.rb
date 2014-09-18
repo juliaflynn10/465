@@ -15,7 +15,7 @@ File.open('words', 'r') do |file|
 end
 
 #prompt user
-puts "Choose a number between 5 and 20"
+puts "Choose a number between 5 and 20."
 #get input, convert to int
 word_length = gets.chomp.to_i
 
@@ -26,31 +26,36 @@ elsif word_length > 20
 end
 
 #delete words that aren't of the specified length from the dictionary
-dic.map!{|x| x if x.size == word_length.compact}
+dic.map!{|x| x if x.size == word_length}.compact!
 
 #while the user hasn't run out of guesses and the word hasn't been completed, allow guesses
 while failed.length < TOTAL_GUESSES && passed.length < word_length
-    puts "Choose a letter. You have " + (TOTAL_GUESSES - failed.length) + " guess(es) remaining."
+    puts "Choose a letter. You have " + (TOTAL_GUESSES - failed.length).to_s + " guess(es) remaining."
     letter = gets.chr
     #while a letter has been guessed
     while failed.include?(letter) || passed.include?(letter)
         puts "You already guessed that, try again. Choose a letter."
+        letter = gets.chr
     end
     #if you can't remove all words that contain the guessed character without the dictionary being empty
     if dic.map{|word| word if !word.include?(letter)}.compact.empty?
-        passed.insert(dic[0].index(letter), letter)
+        offset = 0
+        while word_length > offset
+            passed.insert(dic[0].index(letter, offset), letter)
+            offset = dic[0].index(letter, offset + 1)
+        end
     else
         failed.push(letter)
     end
 
     failed_guesses = failed.each{|x| print x, " "}
-    passed_guesses = passed.each_chr do |x| 
+    passed_guesses = passed.each do |x| 
         if x 
             print x 
         else 
             print '_'
-        print " "
         end
+        print " "
     end
     puts "INCORRECT GUESSES: " + failed_guesses
     puts "MYSTERY WORD: " + passed_guesses
