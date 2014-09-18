@@ -39,7 +39,7 @@ while failed.length < TOTAL_GUESSES && passed.compact.length < word_length
     #if you can't remove all words that contain the guessed character without the dictionary being empty
     if dic.map{|word| word if !word.include?(letter)}.compact.empty?
         offset = 0
-        while word_length > offset && offset != nil
+        while offset != nil && word_length > offset 
             passed.delete_at(dic[0].index(letter, offset))
             passed.insert(dic[0].index(letter, offset), letter)
             offset = dic[0].index(letter, offset + 1)
@@ -49,8 +49,11 @@ while failed.length < TOTAL_GUESSES && passed.compact.length < word_length
         failed.push(letter)
     end
 
-    failed_guesses = failed.each{|x| print x, " "}
-    passed_guesses = passed.each do |x| 
+    print "INCORRECT GUESSES: "
+    failed.each{|x| print x, " "}
+
+    print "\nMYSTERY WORD: "
+    passed.each do |x| 
         if x 
             print x 
         else 
@@ -58,15 +61,13 @@ while failed.length < TOTAL_GUESSES && passed.compact.length < word_length
         end
         print " "
     end
-    puts "INCORRECT GUESSES: " + failed_guesses.to_s
-    puts '\n'
-    puts "MYSTERY WORD: " + passed_guesses.to_s
+    puts "\n"
 end
 
-if passed_guesses.compact.length == word_length
+if passed.compact.length == word_length
     puts "You Won!"
 else
-    puts "You Lost"
+    puts "You Lost. The word was \"" + dic[0] + "\"."
 end
 
 
