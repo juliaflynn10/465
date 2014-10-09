@@ -5,7 +5,7 @@ class HomeController < ApplicationController
  	 end
 
   	def show
-
- 	 end
+		@guesses_array = params[]
+	end
 end
 
