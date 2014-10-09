@@ -1,3 +1,27 @@
 <h3>Julia Flynn</h3>
 <br>
 <%= link_to "Play Again", root_path %>
+<table>
+<tbody>
+<tr>
+
+<tr>
+        <td><%="Step 0" %> </td>
+        <td><%=@guesses_array[0]%></td>
+</tr>
+<% @guesses_array[1..5].each do |value, key|
+	if value != "" %>
+
+	<tr>
+		<td><%= key %> </td>
+		<td><%= value %></td>
+	</tr>
+<%
+end
+end%>
+<tr>
+        <td><%="Goal" %> </td>
+        <td><%=@guesses_array[6]%></td>
+</tr>
+</tbody>		
+</table>
