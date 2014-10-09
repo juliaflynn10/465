@@ -1,7 +1,8 @@
 <h3>Julia Flynn</h3>
 <br>
 <%= link_to "Play Again", root_path %>
-<table>
+<% step_count = 1 %>
+<table cellpadding="3" border="1">
 <tbody>
 <tr>
 
@@ -9,19 +10,26 @@
         <td><%="Step 0" %> </td>
         <td><%=@guesses_array[0]%></td>
 </tr>
-<% @guesses_array[1..5].each do |value, key|
-	if value != "" %>
+<% @guesses_array[1..5].each do |value, key| %>
+	<%if value != "" %>
 
-	<tr>
-		<td><%= key %> </td>
-		<td><%= value %></td>
-	</tr>
-<%
-end
-end%>
+		<tr>
+			<td><%="Step #{step_count}" %> </td>
+			<td><%= value %></td>
+		</tr>
+
+		<%step_count += 1 %>
+	<%end%>
+<%end%>
 <tr>
         <td><%="Goal" %> </td>
         <td><%=@guesses_array[6]%></td>
 </tr>
 </tbody>		
 </table>
+
+<%if @success %>
+	<h3> "You Won"</h3>
+ <%else%>
+	<h3>"You Lose"</h3>
+<% end%>
