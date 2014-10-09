@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
  root "home#index"
 
- get 'query', to: 'home#show'
+ get 'guess', to: 'home#show'
 
 
 
