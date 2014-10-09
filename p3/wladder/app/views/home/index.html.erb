@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head></head>
-<body>
+
 <div class="title">#Julia Flynn<br> #CINS 465 <br> #P3</div>
 <div class="rules"><p>Fill in each step with a word that differs from the word in the previous step by no more than one character. Once you reach a word that differs from the goal by only one letter, you can stop and leave the remainder of the steps empty.<p><div>
-<% step0 = dictionary.sample %>
-<% step6 = dictionary.sample %>
-<%="Step 0:  " + step0%>
+<% guesses= {
+	step0: dictionary.sample,
+	step1: "",
+	step2: "",
+	step3: "",
+	step4: "",
+	step5: "",
+	step6: dictionary.sample} %>
+<%="Step 0:  " + guesses[:step0]%>
 <%= form_tag(guesses_path, method: "get") do %>
 	<%= hidden_field_tag(:step0, "Step 0: ")%>
 	<%= label_tag(:step1, "Step 1: ") %>
@@ -22,8 +25,5 @@
 	<%= submit_tag("Whatever.. just see what happens")%><br>
 	<%= hidden_field_tag(:step6, "Goal: ")%>
 <%end%>
-<%="Goal:  " + step6%>
-
-</body>
-</html>
+<%="Goal:  " + guesses[:step6]%>
 
