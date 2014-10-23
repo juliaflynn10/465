@@ -1,0 +1,9 @@
+# GET /professors/new
+def new
+  @professor = Professor.new
+  # if we created multiple new ratings, they would all 
+  # show up in the new view
+  # The new Rating is put into the Professor's array of Ratings
+  # that we can access in the view using @professors.ratings
+  @professor.ratings.new
+end
