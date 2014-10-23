@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @fingerprint.name%>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @fingerprint.about%>
+</p>
+
+<%= link_to "Show Links", fingerprint_ratings_path(@fingerprint) %> |
+<%= link_to 'Edit', edit_fingerprint_path(@fingerprint) %> |
+<%= link_to 'Show all Fingerprints', fingerprints_path %>
