@@ -1,0 +1,28 @@
+<h1>Listing Fingerprints</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>About</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fingerprints.each do |fingerprint| %>
+      <tr>
+        <td><%= fingerprint.name %></td>
+        <td><%= fingerprint.about %></td>
+        <td><%= link_to 'Show', professor %></td>
+        <td><%= link_to 'Edit', edit_fingerprint_path(fingerprint) %></td>
+        <td><%= link_to 'Destroy', fingerprint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fingerprint', new_fingerprint_path %>
+~                                                                   
