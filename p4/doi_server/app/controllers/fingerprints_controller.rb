@@ -8,6 +8,7 @@ class FingerprintsController < ApplicationController
 
   # GET /fingerprints/1
   def show
+ 	@link = @fingerprint.links.new
   end
 
   # GET /fingerprints/new

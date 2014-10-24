@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @fingerprint.name %>'s History </h1>
+
+<!-- this table use to be in app/views/links/index.html.erb -->
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>About</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fingerprint.links.each do |link| %>
+      <% if !link.new_record? %>
+        <tr>
+          <td><%= link.address %></td>
+          <td><%= link_to 'Edit', edit_link_path(link) %></td>
+          <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<br>
+<h3>Create New Rating</h3>
+<%= render 'links/form' %>
+<br>
+<br>
+
+<%= link_to "Edit #{@fingerprint.name}'s Profile", edit_fingerprint_path(@fingerprint) %> |
+<%= link_to 'Show all Fingerprints, fingerprints_path %>
