@@ -1,0 +1,26 @@
+<!-- the following calls the name() function in the Fingerprint model -->
+<h1><%= @fingerprint.name %>'s Sites </h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sites:</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sites.each do |site| %>
+      <tr>
+        <td><%= site.site%></td>
+        <td><%= link_to 'Edit', edit_site_path(site) %></td>
+        <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Site', new_fingerprint_site_path %> |
+<%= link_to "Back to #{@fingerprint.name}'s page", fingerprint_path(@fingerprint) %>
