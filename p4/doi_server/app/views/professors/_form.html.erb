@@ -19,23 +19,7 @@
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
-  <div class="field">
-    <%= f.label :doi %><br>
-    <%= f.text_field :doi %>
-  </div>
-  <% if @fingerprint.sites.last.new_record? %>
-    <%= f.fields_for :sites do |sites_form| %>
-      <h3>New Site</h3>
-      <div style="margin-left:30px;">
-        <div class="field">
-          <%= sites_form.label :site %><br>
-          <%= sites_form.text_field :site %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-  <br> 
- <div class="actions">
+  <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

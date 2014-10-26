@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @fingerprint.university + ": " + @fingerprint.name %>'s Sites </h1>
+
+<!-- this table use to be in app/views/sites/index.html.erb -->
+<table>
+  <thead>
+      <tr>
+        <th>URL</th>
+        <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fingerprint.sites.each do |site| %>
+     <% if !site.new_record? %>
+       <tr>
+        <td><%= site.url %></td>
+        <td><%= link_to 'Edit', edit_site_path(site) %></td>
+        <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       </tr> 
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<br>
+<br>
+<h3>Create New Site</h3>
+<%= render 'sites/form' %>
+<br>
+<br>
+<%= link_to "Edit #{@fingerprint.name}'s Profile", edit_fingerprint_path(@fingerprint) %> |
+<%= link_to 'Show all Fingerprints', fingerprints_path %>

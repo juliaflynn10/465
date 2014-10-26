@@ -8,20 +8,12 @@ class FingerprintsController < ApplicationController
 
   # GET /fingerprints/1
   def show
-    # create an empty Rating so we can allow the user to 
-    # fill it in on the show view
-    @site = @fingerprint.sites.new
+   @site = @fingerprint.sites.new
   end
 
   # GET /fingerprints/new
   def new
     @fingerprint = Fingerprint.new
-    # if we created multiple new ratings, they would all 
-    # show up in the new view
-    # The new Rating is put into the Professor's array of Ratings
-    # that we can access in the view using @professors.ratings
-    @fingerprint.sites.new
-
   end
 
   # GET /fingerprints/1/edit
@@ -62,6 +54,6 @@ class FingerprintsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fingerprint_params
-      params.require(:fingerprint).permit(:name, :description, :doi, sites_attributes: [:site, :doi])
+      params.require(:fingerprint).permit(:name, :description)
     end
 end
