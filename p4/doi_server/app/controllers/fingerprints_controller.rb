@@ -1,5 +1,5 @@
 class FingerprintsController < ApplicationController
-  before_action :set_fingerprint, only: [:show, :edit, :update, :destroy]
+  before_action :set_fingerprint, only: [ :edit, :update, :destroy]
 
   # GET /fingerprints
   def index
@@ -8,6 +8,11 @@ class FingerprintsController < ApplicationController
 
   # GET /fingerprints/1
   def show
+   if params[:id]
+	@fingerprint = Fingerprint.find(params[:id])
+   elsif params[:name]
+        @fingerprint = Fingerprint.find(Fingerprint.where("name like ?", params[:name]))
+   end
    @site = @fingerprint.sites.new
   end
 

@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   end
 
   root 'fingerprints#index'
-
+  get 'input', to: 'fingerprints#show'
 end
