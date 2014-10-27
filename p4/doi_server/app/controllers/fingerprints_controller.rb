@@ -14,6 +14,7 @@ class FingerprintsController < ApplicationController
   # GET /fingerprints/new
   def new
     @fingerprint = Fingerprint.new
+    @fingerprint.sites.new
   end
 
   # GET /fingerprints/1/edit
@@ -22,7 +23,11 @@ class FingerprintsController < ApplicationController
 
   # POST /fingerprints
   def create
-    @fingerprint = Fingerprint.new(fingerprint_params)
+  # MAGIC SPOT
+  # Since the Professor "has_many" ratings, the new function looks
+  # for Ratings parameters in the given parameters.  If it finds 
+  # them it will also create one (or more) new Rating objects 
+   @fingerprint = Fingerprint.new(fingerprint_params)
 
     if @fingerprint.save
       redirect_to @fingerprint, notice: 'Fingerprint was successfully created.'
@@ -54,6 +59,6 @@ class FingerprintsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fingerprint_params
-      params.require(:fingerprint).permit(:name, :description)
+      params.require(:fingerprint).permit(:name, :description, sites_attributes: [:url])
     end
 end
