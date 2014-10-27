@@ -19,7 +19,7 @@ fingerprints = Fingerprint.create(
 	{ name: 'Buscemeyes', description: 'Chicks with Steve Buscemi eyes'},
  	{ name: 'Ikea', description: 'Germans . . .'},
 	{ name: 'Target', description: 'Snooty Walmart'}
-)
+])
 
 sites = Site.create(
   [
