@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+body{
+	font-family: Avenir;
+	background: #000000;
+	color: #FFFFF0;
+}
+
+table, th, td{
+	font-family: Avenir;
+	font-size: 12px;
+	border: 1px solid #FFCC00;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+th, td{
+	padding: 10px;
+	margin: 10px;
+}
+a:link {
+	color: #FFFFF0;
+}	
+a:visited{
+	color: #FFFF00;
+}
