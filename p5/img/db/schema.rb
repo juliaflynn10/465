@@ -11,36 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118015053) do
+ActiveRecord::Schema.define(version: 20141118035451) do
 
-  create_table "img_auths", force: true do |t|
-    t.integer  "usr_id"
-    t.integer  "imgob_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "img_auths", ["imgob_id"], name: "index_img_auths_on_imgob_id"
-  add_index "img_auths", ["usr_id"], name: "index_img_auths_on_usr_id"
-
-  create_table "img_obs", force: true do |t|
+  create_table "image_objects", force: true do |t|
     t.string   "filename"
     t.boolean  "private"
-    t.integer  "usr_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "image_users", force: true do |t|
+    t.integer  "image_object_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "image_users", ["image_object_id"], name: "index_image_users_on_image_object_id"
+
+  create_table "tag_objects", force: true do |t|
+    t.string   "tag_string"
+    t.integer  "image_object_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "img_obs", ["usr_id"], name: "index_img_obs_on_usr_id"
-
-  create_table "tags", force: true do |t|
-    t.string   "tag"
-    t.integer  "imgob_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "tags", ["imgob_id"], name: "index_tags_on_imgob_id"
+  add_index "tag_objects", ["image_object_id"], name: "index_tag_objects_on_image_object_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -55,6 +52,8 @@ ActiveRecord::Schema.define(version: 20141118015053) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "fname"
+    t.string   "lname"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ImgObTest < ActiveSupport::TestCase
+class TagObjectTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

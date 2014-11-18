@@ -18,7 +18,7 @@ user = User.create(
         ]
 )
 
-imgob =  ImgOb.create(
+image_object =  ImageObject.create(
 	[
 		{filename: '00.jpg', private:false, user_id: users[0].id},
 		{filename: '10.jpg', private:false, user_id: users[1].id},
@@ -41,40 +41,40 @@ imgob =  ImgOb.create(
 	]
 )
 
-tag =  Tag.create(
+tag_object =  TagObject.create(
 	[
-		{tag: ‘funny’, imgob_id: imgobs[0].id},
-		{tag: ‘funny’,  imgob_id: imgobs[1].id},
-		{tag: ‘lol’, imgob_id: imgobs[1].id},
-		{tag: ‘lmao’, imgob_id: imgobs[1].id},
-		{tag: ‘funny’,  imgob_id: imgobs[2].id},
-		{tag: ‘lol’,  imgob_id: imgobs[2].id},
-		{tag: ‘silly’, imgob_id: imgobs[3].id},
-		{tag: ‘cats’, imgob_id: imgobs[3].id},
-		{tag: ‘kitty’, imgob_id: imgobs[3].id},
-		{tag: ‘funny’,  imgob_id: imgobs[3].id},
-		{tag: ‘money’, imgob_id: imgobs[3].id},
-		{tag: ‘art’, imgob_id: imgobs[4].id},
-		{tag: ‘cats’, imgob_id: imgobs[5].id},
-		{tag: ‘kitty’, imgob_id: imgobs[5].id},
-		{tag: ‘genius’, imgob_id: imgobs[6].id},
-		{tag: ‘funny’, imgob_id: imgobs[6].id},
-		{tag: ‘wow’, imgob_id: imgobs[6].id},
-		{tag: ‘silly’, imgob_id: imgobs[6].id}
+		{tag_string: ‘funny’, image_object_id: image_objects[0].id},
+		{tag_string: ‘funny’, image_object_id: image_objects[1].id},
+		{tag_string: ‘lol’, image_object_id: image_objects[1].id},
+		{tag_string: ‘lmao’, image_object_id: image_objects[1].id},
+		{tag_string: ‘funny’,  image_object_id: image_objects[2].id},
+		{tag_string: ‘lol’,  image_object_id: image_objects[2].id},
+		{tag_string: ‘silly’, image_object_id: image_objects[3].id},
+		{tag_string: ‘cats’, image_object_id: image_objects[3].id},
+		{tag_string: ‘kitty’, image_object_id: image_objects[3].id},
+		{tag_string: ‘funny’,  image_object_id: image_objects[3].id},
+		{tag_string: ‘money’, image_object_id: image_objects[3].id},
+		{tag_string: ‘art’, image_object_id: image_objects[4].id},
+		{tag_string: ‘cats’, image_object_id: image_objects[5].id},
+		{tag_string: ‘kitty’, image_object_id: image_objects[5].id},
+		{tag_string: ‘genius’, image_object_id: image_objects[6].id},
+		{tag_string: ‘funny’, image_object_id: image_objects[6].id},
+		{tag_string: ‘wow’, image_object_id: image_objects[6].id},
+		{tag_string: ‘silly’, image_object_id: image_objects[6].id}
 	]
 )
 
-imgauth =  ImgAuth.create(
+image_user = ImageUser.create(
 	[
-		{usr_id: usrs[1].id, imgob_id: imgobs[3].id},
-		{usr_id: usrs[2].id,  imgob_id: imgobs[5].id},
-		{usr_id: usrs[5].id , imgob_id: imgobs[5].id},
-		{usr_id: usrs[3].id,  imgob_id: imgobs[8].id},
-		{usr_id: usrs[6].id,  imgob_id: imgobs[8].id},
-		{usr_id: usrs[4].id, imgob_id: imgobs[11].id},
-		{usr_id: usrs[6].id,  imgob_id: imgobs[14].id},
-		{usr_id: usrs[4].id, imgob_id: imgobs[14].id},
-		{usr_id: usrs[5].id, imgob_id: imgobs[14].id}
+		{user_id: users[1].id, image_object_id: image_objects[3].id},
+		{user_id: users[2].id, image_object_id: image_objects[5].id},
+		{user_id: users[5].id, image_object_id: image_objects[5].id},
+		{user_id: users[3].id, image_object_id: image_objects[8].id},
+		{user_id: users[6].id, image_object_id: image_objects[8].id},
+		{user_id: users[4].id, image_object_id: image_objects[11].id},
+		{user_id: users[6].id, image_object_id: image_objects[14].id},
+		{user_id: users[4].id, image_object_id: image_objects[14].id},
+		{user_id: users[5].id, image_object_id: image_objects[14].id}
 
 	]
 )

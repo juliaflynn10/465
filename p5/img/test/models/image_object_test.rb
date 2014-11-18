@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ImgAuthTest < ActiveSupport::TestCase
+class ImageObjectTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -3,9 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :imgauths, dependent: :destroy
-  has_many :imgobs, through: :imgauths
 
-
-
+  has_many :image_objects, dependent: :destroy
+  has_many :image_users, dependent: :destroy
+  has_many :image_objects, through: :users
 end
