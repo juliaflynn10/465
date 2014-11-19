@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tag string:</strong>
+  <%= @tag_object.tag_string %>
+</p>
+
+<p>
+  <strong>Image object:</strong>
+  <%= @tag_object.image_object %>
+</p>
+
+<%= link_to 'Edit', edit_tag_object_path(@tag_object) %> |
+<%= link_to 'Back', tag_objects_path %>
