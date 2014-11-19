@@ -5,7 +5,8 @@ class TagObjectsController < ApplicationController
   # GET /tag_objects.json
   def index
     @tag_objects = TagObject.all
-  end
+    @users = User.all
+   end
 
   # GET /tag_objects/1
   # GET /tag_objects/1.json

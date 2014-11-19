@@ -5,6 +5,7 @@ class ImageUsersController < ApplicationController
   # GET /image_users.json
   def index
     @image_users = ImageUser.all
+    @users = User.all
   end
 
   # GET /image_users/1
