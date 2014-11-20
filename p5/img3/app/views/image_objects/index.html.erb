@@ -1,4 +1,47 @@
-<h1>Listing image_objects</h1>
+
+<div class= "signInUp">
+	<div class= "signIn">
+		<%= form_for(:user, :url => session_path(:user)) do |f| %>
+			<%= f.label :email %>
+			<%= f.text_field :email, :class => "login" %><br>
+			<%= f.label :password %>
+			<%= f.password_field :password, :class => "login" %><br>
+			<%= f.check_box :remember_me %>
+			<%= f.label :remember_me %>
+			<%= f.submit 'Sign in' %><br>
+			<%= link_to "Forgot your password?", new_password_path(:user) %>
+		<% end %>
+	</div><br>
+	<div class= "signUp">
+		<%= form_for(:user, :url => new_user_session_path(:user)) do |f| %>
+      			<%= f.text_field :email %>
+			<%= f.label :email %><br>
+			<%= f.text_field :name %>
+			<%= f.label :name %><br>
+			<%= f.password_field :password %>
+			<%= f.label :password %><br>
+      			<%= f.submit 'Sign up' %>
+   		 <% end %>
+	</div>
+</div>
+<div class= "publicImages">
+	<% @imgs.each do |image| %>
+		<%= image_tag root_url + "/images/" + image.filename, size: "100x100", alt: image.filename %>
+		<%= p image.filename %>
+	<% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <table>
   <thead>

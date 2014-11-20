@@ -5,6 +5,7 @@ class ImageObjectsController < ApplicationController
   # GET /image_objects.json
   def index
     @image_objects = ImageObject.all
+    @imgs = ImageObject.select{|i| i.public}
     @users = User.all  
   end
 

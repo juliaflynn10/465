@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = User.create(
+users = User.create(
         [
                 { name:'Stephen Fry', email:'imwhatwillisistalkingabout@gmail.com', password:'thugg!n', password_confirmation:'thugg!n'},
                 { name:'Jack Nicholson', email:'2kule4rulez@gmail.com', password:'po$$y', password_confirmation:'po$$y'},
@@ -18,7 +18,7 @@ user = User.create(
         ]
 )
 
-image_object =  ImageObject.create(
+image_objects =  ImageObject.create(
 	[
 		{filename: '00.jpg', public:false, user_id: users[0].id},
 		{filename: '10.jpg', public:false, user_id: users[1].id},
@@ -41,30 +41,30 @@ image_object =  ImageObject.create(
 	]
 )
 
-tag_object =  TagObject.create(
+tag_objects =  TagObject.create(
 	[
-		{tag_string: ‘funny’, image_object_id: image_objects[0].id},
-		{tag_string: ‘funny’, image_object_id: image_objects[1].id},
-		{tag_string: ‘lol’, image_object_id: image_objects[1].id},
-		{tag_string: ‘lmao’, image_object_id: image_objects[1].id},
-		{tag_string: ‘funny’,  image_object_id: image_objects[2].id},
-		{tag_string: ‘lol’,  image_object_id: image_objects[2].id},
-		{tag_string: ‘silly’, image_object_id: image_objects[3].id},
-		{tag_string: ‘cats’, image_object_id: image_objects[3].id},
-		{tag_string: ‘kitty’, image_object_id: image_objects[3].id},
-		{tag_string: ‘funny’,  image_object_id: image_objects[3].id},
-		{tag_string: ‘money’, image_object_id: image_objects[3].id},
-		{tag_string: ‘art’, image_object_id: image_objects[4].id},
-		{tag_string: ‘cats’, image_object_id: image_objects[5].id},
-		{tag_string: ‘kitty’, image_object_id: image_objects[5].id},
-		{tag_string: ‘genius’, image_object_id: image_objects[6].id},
-		{tag_string: ‘funny’, image_object_id: image_objects[6].id},
-		{tag_string: ‘wow’, image_object_id: image_objects[6].id},
-		{tag_string: ‘silly’, image_object_id: image_objects[6].id}
+		{tag_string: 'funny', image_object_id: image_objects[0].id},
+		{tag_string: 'funny', image_object_id: image_objects[1].id},
+		{tag_string: 'lol', image_object_id: image_objects[1].id},
+		{tag_string: 'lmao', image_object_id: image_objects[1].id},
+		{tag_string: 'funny',  image_object_id: image_objects[2].id},
+		{tag_string: 'lol',  image_object_id: image_objects[2].id},
+		{tag_string: 'silly', image_object_id: image_objects[3].id},
+		{tag_string: 'cats', image_object_id: image_objects[3].id},
+		{tag_string: 'kitty', image_object_id: image_objects[3].id},
+		{tag_string: 'funny',  image_object_id: image_objects[3].id},
+		{tag_string: 'money', image_object_id: image_objects[3].id},
+		{tag_string: 'art', image_object_id: image_objects[4].id},
+		{tag_string: 'cats', image_object_id: image_objects[5].id},
+		{tag_string: 'kitty', image_object_id: image_objects[5].id},
+		{tag_string: 'genius', image_object_id: image_objects[6].id},
+		{tag_string: 'funny', image_object_id: image_objects[6].id},
+		{tag_string: 'wow', image_object_id: image_objects[6].id},
+		{tag_string: 'silly', image_object_id: image_objects[6].id}
 	]
 )
 
-image_user = ImageUser.create(
+image_users = ImageUser.create(
 	[
 		{user_id: users[1].id, image_object_id: image_objects[3].id},
 		{user_id: users[2].id, image_object_id: image_objects[5].id},
