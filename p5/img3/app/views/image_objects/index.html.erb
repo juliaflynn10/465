@@ -1,5 +1,22 @@
 
-<div class= "signInUp">
+<% if user_signed_in? %>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
+<div class= "publicImages">
+        <% @imgs.each do |image| %>
+                <%= image_tag root_url + "/images/" + image.filename, height: "100px", alt: image.filename %>
+        <% end %>
+	<% @privimgs.each do |image| %>
+                <%= image_tag root_url + "/images/" + image.filename, height: "100px", alt: image.filename %>
+        <% end %>
+	<% @sharimgs.each do |image| %>
+                <%= image_tag root_url + "/images/" + image.filename, height: "100px", alt: image.filename %>
+        <% end %>
+</div>
+
+
+       
+<% else %>
+   <div class= "signInUp">
 	<div class= "signIn">
 		<%= form_for(:user, :url => session_path(:user)) do |f| %>
 			<%= f.label :email %>
@@ -29,8 +46,7 @@
 		<%= image_tag root_url + "/images/" + image.filename, height: "100px", alt: image.filename %>
 	<% end %>
 </div>
-
-
+<%end%>
 
 
 

@@ -1,11 +1,85 @@
-<h1> Social Network Demo Homepage </h1>
+
+<% if user_signed_in? %>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
+<div class= "publicImages">
+        <% @imgs.each do |image| %>
+                <%= image_tag root_url + "/images/" + image.filename, height: "100px", alt: image.filename %>
+        <% end %>
+	<% @privimgs.each do |image| %>
+                <%= image_tag root_url + "/images/" + image.filename, height: "100px", alt: image.filename %>
+        <% end %>
+	<% @sharimgs.each do |image| %>
+                <%= image_tag root_url + "/images/" + image.filename, height: "100px", alt: image.filename %>
+        <% end %>
+</div>
 
 
-<div class="signInUp">
-	<div class="signIn">
-	<%=# render 'devise/sessions/new'%>
+       
+<% else %>
+   <div class= "signInUp">
+	<div class= "signIn">
+		<%= form_for(:user, :url => session_path(:user)) do |f| %>
+			<%= f.label :email %>
+			<%= f.text_field :email, :class => "login" %><br>
+			<%= f.label :password %>
+			<%= f.password_field :password, :class => "login" %><br>
+			<%= f.check_box :remember_me %>
+			<%= f.label :remember_me %>
+			<%= f.submit 'Sign in' %><br>
+			<%= link_to "Forgot your password?", new_password_path(:user) %>
+		<% end %>
 	</div>
-	<div class="signUp">
-	<%=# render 'devise/registrations/new %>		
+	<div class= "signUp">
+		<%= form_for(:user, :url => new_user_session_path(:user)) do |f| %>
+			<%= f.label :email %>
+      			<%= f.text_field :email %><br>
+			<%= f.label :name %>
+			<%= f.text_field :name %><br>
+			<%= f.label :password %>
+			<%= f.password_field :password %><br>
+      			<%= f.submit 'Sign up' %>
+   		 <% end %>
 	</div>
 </div>
+<div class= "publicImages">
+	<% @imgs.each do |image| %>
+		<%= image_tag root_url + "/images/" + image.filename, height: "100px", alt: image.filename %>
+	<% end %>
+</div>
+<%end%>
+
+
+
+
+
+
+
+
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Filename</th>
+      <th>Public</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @image_objects.each do |image_object| %>
+      <tr>
+        <td><%= image_object.filename %></td>
+        <td><%= image_object.public %></td>
+        <td><%= link_to 'Show', image_object %></td>
+        <td><%= link_to 'Edit', edit_image_object_path(image_object) %></td>
+        <td><%= link_to 'Destroy', image_object, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Image object', new_image_object_path %>

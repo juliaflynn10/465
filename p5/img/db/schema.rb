@@ -11,33 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118035451) do
+ActiveRecord::Schema.define(version: 20141120070028) do
 
   create_table "image_objects", force: true do |t|
     t.string   "filename"
-    t.boolean  "private"
+    t.boolean  "public"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
+
+  add_index "image_objects", ["user_id"], name: "index_image_objects_on_user_id"
 
   create_table "image_users", force: true do |t|
     t.integer  "image_object_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   add_index "image_users", ["image_object_id"], name: "index_image_users_on_image_object_id"
+  add_index "image_users", ["user_id"], name: "index_image_users_on_user_id"
 
   create_table "tag_objects", force: true do |t|
     t.string   "tag_string"
-    t.integer  "image_object_id"
+    t.integer  "image_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "tag_objects", ["image_object_id"], name: "index_tag_objects_on_image_object_id"
+  add_index "tag_objects", ["image_id"], name: "index_tag_objects_on_image_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -52,8 +55,7 @@ ActiveRecord::Schema.define(version: 20141118035451) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "fname"
-    t.string   "lname"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

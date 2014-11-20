@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 users = User.create(
         [
-                { name:'Stephen Fry', email:'imwhatwillisistalkingabout@gmail.com', password:'thugg!n', password_confirmation:'thugg!n'},
-                { name:'Jack Nicholson', email:'2kule4rulez@gmail.com', password:'po$$y', password_confirmation:'po$$y'},
-                { name:'Queen Bey', email:'iwokeuplikethis@gmail.com', password:'fl*wless', password_confirmation:'fl*wless'},
+                { name:'Stephen Fry', email:'imwhatwillisistalkingabout@gmail.com', password:'thugg1n', password_confirmation:'thugg1n'},
+                { name:'Jack Nicholson', email:'2kule4rulez@gmail.com', password:'po55y', password_confirmation:'po55y'},
+                { name:'Queen Bey', email:'iwokeuplikethis@gmail.com', password:'fl4wless', password_confirmation:'fl4wless'},
                 { name:'Hunter Thompson', email:'nothing2lose@gmail.com', password:'st0ckt0n', password_confirmation:'st0ckt0n'},
                 { name:'Lil Wayne', email:'youngmoney@gmail.com', password:'CREAM', password_confirmation:'CREAM'},
                 { name:'Orbit Britson', email:'lintlicker@gmail.com', password:'solarsystem', password_confirmation:'solarsystem'},

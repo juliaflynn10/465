@@ -2,8 +2,10 @@
 
 one:
   filename: MyString
-  private: false
+  public: false
+  user_id: 
 
 two:
   filename: MyString
-  private: false
+  public: false
+  user_id: 
