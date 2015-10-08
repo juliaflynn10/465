@@ -5,11 +5,11 @@
 
 <% guesses = {
 	step0: dictionary.sample,
-	step1: "",
-	step2: "",
-	step3: "",
-	step4: "",
-	step5: "",
+	step1: nil,
+	step2: nil,
+	step3: nil,
+	step4: nil,
+	step5: nil,
 	step6: dictionary.sample} %>
 <%="Step 0:  " + guesses[:step0]%>
 <%= form_tag(guesses_path, method: "get") do %>

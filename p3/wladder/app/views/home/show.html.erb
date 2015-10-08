@@ -8,10 +8,10 @@
 
 <tr>
         <td><%="Step 0" %> </td>
-        <td><%=@guesses_array[0]%></td>
+        <td><%=@guesses_array.first%></td>
 </tr>
-<% @guesses_array[1..5].each do |value, key| %>
-	<%if value != "" %>
+<% @guesses_array[1..-2].each do |value|%>
+	<% if value != "" %>
 
 		<tr>
 			<td><%="Step #{step_count}" %> </td>
@@ -23,12 +23,13 @@
 <%end%>
 <tr>
         <td><%="Goal" %> </td>
-        <td><%=@guesses_array[6]%></td>
+        <td><%=@guesses_array.last%></td>
 </tr>
 </tbody>		
 </table>
 
-<%if @success %>
+
+<%if legal @guesses_array%>
 	<h3> "You Won"</h3>
  <%else%>
 	<h3>"You Lose"</h3>

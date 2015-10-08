@@ -5,11 +5,8 @@ class HomeController < ApplicationController
  	 end
 
   	def show
-		@guesses_array = params.permit(:step0, :step1, :step2, :step3, :step4, :step5, :step6).map{|guess| guess[1]}
+		@guesses_array = params.permit(:step0, :step1, :step2, :step3, :step4, :step5, :step6).keep_if{|key, value| value != ""}.map{|guess| guess[1]}
 	@success = false
-	if legal @guesses_array
-		@success = true
-	end
 
 	end
 end
