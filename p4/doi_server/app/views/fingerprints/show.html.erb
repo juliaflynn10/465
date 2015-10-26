@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+<h1><%= @fingerprint.name %>'s Recent History</h1>
+
+<table>
+  <thead>
+      <tr>
+        <th>DOI</th>
+        <th>Name</th>
+	<th>URL</th>
+	<th>Description</th>
+	<th>Timestamp</th>
+        <th colspan="4"></th>
+    </tr>
+  </thead>
+  <tbody>
+       <tr>
+        <td><%= @fingerprint.id %></td>
+	<td><%= @fingerprint.name %></td>
+	<td><%= @fingerprint.sites.order("created_at").last.url %></td>
+	<td><%= @fingerprint.description %></td>
+	<td><%= @fingerprint.sites.order("created_at").last.created_at %></td>
+       </tr> 
+  </tbody>
+</table>
+
+
+
+
+
+<h1><%= @fingerprint.name %>'s Complete History</h1>
+
+<!-- this table use to be in app/views/sites/index.html.erb -->
+<table>
+  <thead>
+      <tr>
+	<th>Timestamp</th>
+        <th>URL</th>
+        <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fingerprint.sites.each do |site| %>
+     <% if !site.new_record? %>
+       <tr>
+	<td><%= site.created_at %></td>
+        <td><%= site.url %></td>
+        <td><%= link_to 'Edit', edit_site_path(site) %></td>
+        <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       </tr> 
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<br>
+<br>
+<h3>Create New Site</h3>
+<%= render 'sites/form' %>
+<br>
+<br>
+<%= link_to "Edit #{@fingerprint.name}'s Profile", edit_fingerprint_path(@fingerprint) %> |
+<%= link_to 'Show all Fingerprints', fingerprints_path %>

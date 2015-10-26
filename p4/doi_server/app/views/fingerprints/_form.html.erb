@@ -1,0 +1,39 @@
+<%= form_for(@fingerprint) do |f| %>
+  <% if @fingerprint.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fingerprint.errors.count, "error") %> prohibited this fingerprint from being saved:</h2>
+
+      <ul>
+      <% @fingerprint.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <% if @fingerprint.sites.last.new_record? %>
+    <%= f.fields_for :sites do |sites_form| %>
+      <h3>New Site</h3>
+      <div style="margin-left:30px;">
+        <div class="field">
+          <%= sites_form.label :url %><br>
+          <%= sites_form.text_field :url %>
+        </div>
+      </div>
+    <% end %>
+  <% end %> 
+
+
+
+ <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

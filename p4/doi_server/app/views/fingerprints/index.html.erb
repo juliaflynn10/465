@@ -1,0 +1,51 @@
+<h1>DOI</h1>
+<p> Search: </p>
+
+<table>
+  <tbody>
+    <tr><%= form_tag(input_path, method: "get") do %>
+        <td><%= label_tag(:id, "DOI: ") %></td>
+        <td><%= text_field_tag(:id) %></td>
+        <td><%= submit_tag("Submit") %></td>
+      <% end %>
+    </tr>
+    <tr><%= form_tag(input_path, method: "get") do %>
+        <td><%= label_tag(:name, "Name: ") %></td>
+        <td><%= text_field_tag(:name) %></td>
+        <td><%= submit_tag("Submit") %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+<table>
+<table>
+<br><br><br>  
+
+
+<p>List of DOIs: </p>
+<thead>
+    <tr>
+      <th>DOI</th>
+      <th>Name</th>
+      <th>Decription</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fingerprints.each do |fingerprint| %>
+      <tr>
+	<td><%= fingerprint.id %></td>
+        <td><%= fingerprint.name %></td>
+        <td><%= fingerprint.description %></td>
+        <td><%= link_to 'Show', fingerprint %></td>
+        <td><%= link_to 'Edit', edit_fingerprint_path(fingerprint) %></td>
+        <td><%= link_to 'Destroy', fingerprint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fingerprint', new_fingerprint_path %>

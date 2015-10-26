@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Filename:</strong>
+  <%= @image_object.filename %>
+</p>
+
+<p>
+  <strong>Public:</strong>
+  <%= @image_object.public %>
+</p>
+
+<%= link_to 'Edit', edit_image_object_path(@image_object) %> |
+<%= link_to 'Back', image_objects_path %>
