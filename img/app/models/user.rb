@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   
   validates :name, presence: true
 
-  has_many :images, dependent: :destroy
-  has_many :image_users, dependent: :destroy
+  has_many :images, through: :image_users
+  has_many :image_users
 
 end
