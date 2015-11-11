@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :image_users
-  resources :tags
-  resources :images
-  # The priority is based upon order of creation: first created -> highest priority.
+  resources :images do
+	resources :tags, :shallow => true
+	resources :image_users, :shallow => true
+  end
+
+  root 'images#index' 
+
+ # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
