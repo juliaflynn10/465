@@ -12,8 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <%= f.label :filename%><br>
+    <%= f.text_field :filename %><br>
+    <%= f.file_field :upload_file %>
+  </div>
+  <div class="field">
+    <%= f.label :private%><br>
+    <%= f.check_box :private%>
+    
   </div>
   <div class="actions">
     <%= f.submit %>

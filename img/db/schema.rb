@@ -22,8 +22,10 @@ ActiveRecord::Schema.define(version: 20151106015346) do
 
   create_table "images", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "filename"
+    t.boolean  "private",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "tags", force: :cascade do |t|

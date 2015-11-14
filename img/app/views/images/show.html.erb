@@ -4,6 +4,29 @@
   <strong>User:</strong>
   <%= @image.user_id %>
 </p>
+<%= image_tag root_url + "/images/" + @image.filename, size: "300x300", alt: @image.filename %>
+<table>
+  <thead>
+    <tr>
+      <th>Tags</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @image.tags.each do |tag| %>
+      <% if !tag.new_record? %>
+      <tr>
+        <td><%= tag.tag_string %></td>
+        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
+        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+     <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>

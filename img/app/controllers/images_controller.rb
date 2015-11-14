@@ -10,6 +10,7 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    @tag = @image.tags.new
   end
 
   # GET /images/new
@@ -25,6 +26,14 @@ class ImagesController < ApplicationController
   # POST /images.json
   def create
     @image = Image.new(image_params)
+    #@image.generate_filename
+    @image.user = current_user
+    
+    @uploaded_io = params[:image][:uploaded_file]
+    
+    File.open(Rails.root.join('public', 'images', @image.filename), 'wb') do |file|
+        file.write(@uploaded_io.read)
+    end
 
     respond_to do |format|
       if @image.save
@@ -69,6 +78,6 @@ class ImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:user_id)
+      params.require(:image).permit(:filename, :private)
     end
 end

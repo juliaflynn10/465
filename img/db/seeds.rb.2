@@ -26,7 +26,7 @@ users = User.create(
     { email: 'i@i.com', name: "Mr. Iguana", password: "i", password_confirmation: "i"},
     { email: 'j@j.com', name: "Mr. Jackrabbit", password: "j", password_confirmation: "j"},
     { email: 'k@k.com', name: "Mr. Kangaroo", password: "k", password_confirmation: "k"},
-    { email: 'l@l.com', name: "Mr. Lama", password: "l", password_confirmation: "l"},
+    { email: 'l@l.com', name: "Mr. Llama", password: "l", password_confirmation: "l"},
     { email: 'm@m.com', name: "Mr. Mouse", password: "m", password_confirmation: "m"},
     { email: 'n@n.com', name: "Mr. Numbat", password: "n", password_confirmation: "n"},
     { email: 'o@o.com', name: "Mr. Opossum", password: "o", password_confirmation: "o"},
@@ -274,6 +274,6 @@ images.each do |image|
   # create tags
   for i in 0..rand(4)
     random_tag_string = gen_tag
-    Tag.create(image_id: image.id, tag_string: random_tag_string)
+    Tag.create(image_id: image.id, str: random_tag_string)
   end
 end
