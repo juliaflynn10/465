@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+
+html, body, p, text, a{
+	font-family: "Verdana", Arial, sans-serif;
+	text-decoration: none;
+}
+
+.public {
+	max-width: 80%;
+	margin: 20px auto;
+} 
+
+.public h2{
+	padding: 30px 10px 0 10px;
+}
+.image-thumb {
+	display: inline-block;
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid #2B2B2B;
+	border-radius: 5px;
+	background-color: #2B2B2B;
+	color: #6EAC65;
+	
+}
+
+.image-thumb a{
+
+	color: #E0E0E0;
+}
+
+.image-thumb a:hover { 
+	color: #FBEB4D;
+
+}

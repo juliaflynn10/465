@@ -2,8 +2,25 @@
 
 <p>
   <strong>User:</strong>
-  <%= @image.user_id %>
+  <%= @image.user.name %>
 </p>
+<p>
+  <strong>File Name:</strong>
+  <%= @image.filename %>
+</p>
+<p>
+  <strong>Privacy:</strong>
+  <% if @image.private %>
+	<%= 'Private' %>
+  <% else %>
+	<%= 'Public' %>
+  <% end %>
+</p> 
+
+
+
+
+
 <%= image_tag root_url + "/images/" + @image.filename, size: "300x300", alt: @image.filename %>
 <table>
   <thead>

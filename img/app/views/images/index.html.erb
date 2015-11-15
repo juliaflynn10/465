@@ -2,27 +2,22 @@
 
 <h1>Listing Images</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Owner</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+  <div class="public">
+    <h2> Public Images </h2>
     <% @images.each do |image| %>
-      <tr>
-        <td><%= image_tag root_url + "/images/" + image.filename, size: "100x100", alt: image.filename %></td>
-        <td><%= image.user.name %></td>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image) %></td>
-        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+       <% if !image.private? %>
+      <div class="image-thumb">
+        <%= image_tag root_url + "/images/" + image.filename, size: "100x100", alt: image.filename %><br>
+        <%= image.user.name %><br>
+        <%= link_to 'Show', image %><br>
+        <%= link_to 'Edit', edit_image_path(image) %><br>
+        <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+      </div>
+	<% end %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+
 
 <br>
 
