@@ -1,7 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Images</h1>
+<% if user_signed_in? %>
+  <div class="my-images">
+    <h2> My Images </h2>
+    <% @images.each do |image| %>
+       <% if image.user_id == current_user.id %>
+      <div class="image-thumb">
+        <%= image_tag root_url + "/images/" + image.filename, size: "100x100", alt: image.filename %><br>
+        <%= image.user.name %><br>
+        <%= link_to 'Show', image %><br>
+        <%= link_to 'Edit', edit_image_path(image) %><br>
+        <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+      </div>
+        <% end %>
+    <% end %>
+	<h2 id="upload-link"><%= link_to 'Upload New Image', new_image_path %></h2>
+  </div>
 
+  <div class="friends-private">
+    <h2> Friend's Private Images </h2>
+    <% @images.each do |image| %>
+       <% if image.private? %>
+	  <% image.image_users.each do |iu| %> 
+	    <% if iu.user_id == current_user.id %>
+      <div class="image-thumb">
+        <%= image_tag root_url + "/images/" + image.filename, size: "100x100", alt: image.filename %><br>
+        <%= image.user.name %><br>
+        <%= link_to 'Show', image %><br>
+        <%= link_to 'Edit', edit_image_path(image) %><br>
+        <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+      </div>
+	<% end %>
+	<% end %>
+        <% end %>
+    <% end %>
+  </div>
+
+<% end %>
 
   <div class="public">
     <h2> Public Images </h2>
@@ -21,4 +56,3 @@
 
 <br>
 
-<%= link_to 'New Image', new_image_path %>

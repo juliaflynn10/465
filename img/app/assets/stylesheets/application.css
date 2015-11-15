@@ -19,22 +19,60 @@ html, body, p, text, a{
 	text-decoration: none;
 }
 
+.my-images {
+        max-width: 80%;
+        margin: 20px auto;
+}
+
+.my-images h2{
+        padding: 30px 10px 10px 10px;
+	width: 100%;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: #2B2B2B;
+}
+
+#upload-link {
+	margin: 0;
+	padding: 10px 0 10px 0;
+	border: none;
+}
+
+.friends-private {
+        max-width: 80%;
+        margin: 20px auto;
+}
+
+.friends-private h2{
+        padding: 30px 10px 10px 10px;
+        width: 100%;
+        border-width: 0 0 1px 0;
+        border-style: solid; 
+        border-color: #2B2B2B;
+}
+
+
 .public {
 	max-width: 80%;
 	margin: 20px auto;
 } 
 
 .public h2{
-	padding: 30px 10px 0 10px;
-}
+        padding: 30px 10px 10px 10px;
+        width: 100%;
+        border-width: 0 0 1px 0;
+        border-style: solid; 
+        border-color: #2B2B2B;
+} 
+
 .image-thumb {
 	display: inline-block;
 	padding: 10px;
-	margin: 10px;
+	margin: 10px 5px;
 	border: 1px solid #2B2B2B;
 	border-radius: 5px;
-	background-color: #2B2B2B;
 	color: #6EAC65;
+	background-color: #2B2B2B;
 	
 }
 
