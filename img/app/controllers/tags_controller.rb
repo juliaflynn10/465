@@ -1,20 +1,11 @@
 class TagsController < ApplicationController
-  before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  before_action :set_tag, only: [:edit, :update, :destroy]
 
-  # GET /tags
-  # GET /tags.json
-  def index
-    @tags = Tag.all
-  end
-
-  # GET /tags/1
-  # GET /tags/1.json
-  def show
-  end
 
   # GET /tags/new
   def new
-    @tag = Tag.new
+    @image = Image.find params[:image_id]
+    @tag = @image.tags.new
   end
 
   # GET /tags/1/edit
@@ -24,30 +15,23 @@ class TagsController < ApplicationController
   # POST /tags
   # POST /tags.json
   def create
-    @tag = Tag.new(tag_params)
+    @image = Image.find params[:image_id]
+    @tag = @image.tags.new(tag_params)
 
-    respond_to do |format|
       if @tag.save
-        format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
-        format.json { render :show, status: :created, location: @tag }
+         redirect_to image_url(@image) , notice: 'Tag was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @tag.errors, status: :unprocessable_entity }
-      end
+         render :new
     end
   end
 
   # PATCH/PUT /tags/1
   # PATCH/PUT /tags/1.json
   def update
-    respond_to do |format|
-      if @tag.update(tag_params)
-        format.html { redirect_to @tag, notice: 'Tag was successfully updated.' }
-        format.json { render :show, status: :ok, location: @tag }
-      else
-        format.html { render :edit }
-        format.json { render json: @tag.errors, status: :unprocessable_entity }
-      end
+    if @tag.update(tag_params)
+      redirect_to image_url(@tag.image), notice: 'Tag was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -55,10 +39,7 @@ class TagsController < ApplicationController
   # DELETE /tags/1.json
   def destroy
     @tag.destroy
-    respond_to do |format|
-      format.html { redirect_to tags_url, notice: 'Tag was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to image_url(@tag.image) , notice: 'Tag was successfully destroyed.'
   end
 
   private

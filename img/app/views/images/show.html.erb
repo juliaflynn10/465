@@ -16,6 +16,11 @@
 
 <%= image_tag root_url + "/images/" + @image.filename, size: "300x300", alt: @image.filename %>
 <br>
+<% if user_signed_in? && current_user.id == @image.user_id %>
+  <%= render 'form' %>
+<% end %>
+
+
 <table>
   <thead>
     <tr>
@@ -30,7 +35,6 @@
       <tr>
 	<td><%= tag.tag_string %></td>
 	 <% if user_signed_in? && current_user.id == @image.user_id %>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
         <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
      	<% end %>
       </tr>
@@ -38,11 +42,10 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
 <% if user_signed_in? && current_user.id == @image.user_id %>
-  <%= render 'form' %>
+  <%= render 'tags/form' %>
 <% end %>
+
 
 </div>
 <h2 class="back-link"> <%= link_to '< Back', images_path %></h2>
