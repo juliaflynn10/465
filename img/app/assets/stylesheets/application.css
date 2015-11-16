@@ -19,6 +19,36 @@ html, body, p, text, a{
 	text-decoration: none;
 }
 
+#user_nav{
+        width: 100%;
+        height: 50px;
+        background-color: #2B2B2B;
+        color: #E0E0E0;
+	margin: -15px -10px;
+	padding: 10px;
+	position: relative;
+	top: 0;
+}
+
+#user_nav p{
+	top: 10%;
+	width: auto;
+	position: absolute;
+	right: 5%;
+	display: inline;
+	vertical-align: text-bottom;
+}
+
+#user_nav h1{
+	top: 10%;
+	width: auto;
+        position: absolute;
+        left: 5%;
+        display: inline;
+	vertical-align: text-bottom;
+	font-size: 32px;
+}
+
 .my-images {
         max-width: 80%;
         margin: 20px auto;
@@ -34,8 +64,9 @@ html, body, p, text, a{
 
 #upload-link {
 	margin: 0;
-	padding: 10px 0 10px 0;
+	padding: 10px 0 10px 5px;
 	border: none;
+	text-align: right;
 }
 
 .friends-private {
@@ -85,3 +116,30 @@ html, body, p, text, a{
 	color: #FBEB4D;
 
 }
+
+.cred-input{
+	border: 1px solid #2B2B2B;
+        border-radius: 5px;
+	padding: 10px;
+	margin: 30px auto;
+	position: relative;
+	width: 180px;
+}
+
+.cred-input .field{
+	position: relative;
+}
+
+.cred-input .actions{
+        position: relative;
+}
+
+.cred-input h2{
+        position: relative;
+	width: 180px;
+}
+
+.cred-input div{
+	position:relative;
+}
+*/
