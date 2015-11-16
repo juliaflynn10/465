@@ -10,21 +10,10 @@
 <% end %>
 </p>
 
-<br>
-
-
-
-<%= image_tag root_url + "/images/" + @image.filename, size: "300x300", alt: @image.filename %>
-<br>
-<% if user_signed_in? && current_user.id == @image.user_id %>
-  <%= render 'form' %>
-<% end %>
-
-
 <table>
   <thead>
     <tr>
-      <span class="title">Tags</span>
+      <span class="title">Tags:</span>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -33,10 +22,10 @@
     <% @image.tags.each do |tag| %>
       <% if !tag.new_record? %>
       <tr>
-	<td><%= tag.tag_string %></td>
-	 <% if user_signed_in? && current_user.id == @image.user_id %>
+        <td><%= tag.tag_string %></td>
+         <% if user_signed_in? && current_user.id == @image.user_id %>
         <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-     	<% end %>
+        <% end %>
       </tr>
      <% end %>
     <% end %>
@@ -44,6 +33,14 @@
 </table>
 <% if user_signed_in? && current_user.id == @image.user_id %>
   <%= render 'tags/form' %>
+<% end %>
+<br>
+
+
+<%= image_tag root_url + "/images/" + @image.filename, size: "300x300", alt: @image.filename %>
+<br>
+<% if user_signed_in? && current_user.id == @image.user_id %>
+  <%= render 'form' %>
 <% end %>
 
 

@@ -7,7 +7,6 @@
         <%= image_tag root_url + "/images/" + image.filename, size: "100x100", alt: image.filename %><br>
         <%= image.user.name %><br>
         <%= link_to 'View Image', image %><br>
-        <%= link_to 'Edit', edit_image_path(image) %><br>
         <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %><br>
       </div>
         <% end %>
