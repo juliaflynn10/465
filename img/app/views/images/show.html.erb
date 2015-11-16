@@ -1,29 +1,25 @@
-<p>
-  <strong>User:</strong>
+<div class="view-image">
+<p> <span class="title"> User:</span>
   <%= @image.user.name %>
 </p>
-<p>
-  <strong>File Name:</strong>
-  <%= @image.filename %>
-</p>
-<p>
-  <strong>Privacy:</strong>
+<p> <span class="title"> Privacy:</span>
   <% if @image.private %>
 	<%= 'Private' %>
   <% else %>
 	<%= 'Public' %>
-  <% end %>
-</p> 
+<% end %>
+</p>
 
-
+<br>
 
 
 
 <%= image_tag root_url + "/images/" + @image.filename, size: "300x300", alt: @image.filename %>
+<br>
 <table>
   <thead>
     <tr>
-      <th>Tags</th>
+      <span class="title">Tags</span>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -32,8 +28,8 @@
     <% @image.tags.each do |tag| %>
       <% if !tag.new_record? %>
       <tr>
-        <td><%= tag.tag_string %></td>
-	 <% if current_user.id == @image.user_id %>
+	<td><%= tag.tag_string %></td>
+	 <% if user_signed_in? && current_user.id == @image.user_id %>
         <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
         <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
      	<% end %>
@@ -44,7 +40,10 @@
 </table>
 
 <br>
-<% if current_user.id == @image.user_id %>
-  <%= link_to 'Edit', edit_image_path(@image) %> |
+<% if user_signed_in? && current_user.id == @image.user_id %>
+  <%= render 'form' %>
 <% end %>
-<%= link_to 'Back', images_path %>
+
+</div>
+<h2 class="back-link"> <%= link_to '< Back', images_path %></h2>
+
