@@ -41,6 +41,36 @@
 <br>
 <% if user_signed_in? && current_user.id == @image.user_id %>
   <%= render 'form' %>
+  <%#= select("user", "user_id", User.all.collect {|u| [ [u.name, u.email],  u.id] })%>
+ 
+<% if @image.private? %>
+<table>
+  <thead>
+    <tr>
+      <th>Shared with:</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @image.image_users.each do |image_user| %>
+     <% if !image_user.new_record? %>
+      <tr>
+	<% @users.each do |u| %>
+	<% if u.id == image_user.user_id %>
+        <td><%= u.name %></td>
+        <td><%= link_to 'Destroy', image_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+	<% end %>
+	</tr>
+     <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+
+  <%= render 'image_users/form'%>
+<% end %>
 <% end %>
 
 
