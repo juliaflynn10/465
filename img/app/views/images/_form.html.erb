@@ -13,12 +13,12 @@
 
 <div class="update-image">
   <div class="field">
-    <%= f.label :filename%>
+   <span class="title"> <%= f.label :filename%></span>
     <%= f.text_field :filename %><br>
    <div class="field-indented">
-    <%= f.file_field :uploaded_file %><br>
+   <span class="title"> <%= f.file_field :uploaded_file %></span><br>
    </div>
-    <%= f.label :private%>
+   <span class="title"> <%= f.label :private%></span>
    <span class="field-indented">
     <%= f.check_box :private%>
    </span>

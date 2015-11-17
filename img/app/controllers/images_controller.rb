@@ -13,6 +13,7 @@ class ImagesController < ApplicationController
     @tag = @image.tags.new
     @image_user = @image.image_users.new
     @users = User.all
+    
   end
 
   # GET /images/new
