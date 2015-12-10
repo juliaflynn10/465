@@ -1,0 +1,33 @@
+<%= form_for(@seating_chart) do |f| %>
+  <% if @seating_chart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@seating_chart.errors.count, "error") %> prohibited this seating_chart from being saved:</h2>
+
+      <ul>
+      <% @seating_chart.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :course_id %><br>
+    <%= f.number_field :course_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :seat_count %><br>
+    <%= f.number_field :seat_count %>
+  </div>
+  <div class="field">
+    <%= f.label :course_id %><br>
+    <%= f.text_field :course_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

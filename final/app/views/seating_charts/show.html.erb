@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @seating_chart.course_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @seating_chart.user_id %>
+</p>
+
+<p>
+  <strong>Seat count:</strong>
+  <%= @seating_chart.seat_count %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @seating_chart.course %>
+</p>
+
+<%= link_to 'Edit', edit_seating_chart_path(@seating_chart) %> |
+<%= link_to 'Back', seating_charts_path %>
