@@ -24,7 +24,8 @@ class SeatingChartsController < ApplicationController
   # POST /seating_charts
   # POST /seating_charts.json
   def create
-    @seating_chart = SeatingChart.new(seating_chart_params)
+   @seating_chart = SeatingChart.new(seating_chart_params)
+
 
     respond_to do |format|
       if @seating_chart.save

@@ -5,6 +5,14 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
+    @all_teachers = Array.new
+    @Users = User.all
+    @Users.each do |u|
+        if u.teacher
+         @all_teachers.push(u)
+        end
+    end
+
   end
 
   # GET /courses/1
@@ -15,6 +23,19 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
+    @Users = User.all
+    @all_students = Array.new
+    @Users.each do |u|
+	if !u.teacher 
+	 @all_students.push(u)
+	end
+    end 
+    @course_teacher = Array.new
+    @Users.each do |u|
+	if u.teacher
+	 @course_teacher.push(u)
+	end
+    end
   end
 
   # GET /courses/1/edit
@@ -25,9 +46,9 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
+    @course.user_id = current_user.id
+  
     
-    @course.user = current_user
-
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
@@ -73,4 +94,6 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:title, :size)
     end
+
+
 end

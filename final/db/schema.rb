@@ -17,9 +17,14 @@ ActiveRecord::Schema.define(version: 20151208023431) do
     t.string   "title"
     t.integer  "size"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "course_id"
+    t.integer  "seating_chart_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
+
+  add_index "courses", ["seating_chart_id"], name: "index_courses_on_seating_chart_id"
+  add_index "courses", ["user_id"], name: "index_courses_on_user_id"
 
   create_table "seating_charts", force: :cascade do |t|
     t.integer  "course_id"
