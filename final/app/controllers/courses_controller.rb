@@ -12,6 +12,8 @@ class CoursesController < ApplicationController
          @all_teachers.push(u)
         end
     end
+    @course_users = CourseUser.all
+    
 
   end
 
@@ -40,6 +42,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+
   end
 
   # POST /courses
@@ -47,8 +50,9 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     @course.user_id = current_user.id
-  
-    
+
+    @course.user = current_user    
+
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'Course was successfully created.' }

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @course_user.user_id %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @course_user.course_id %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @course_user.course %>
+</p>
+
+<p>
+  <strong>Seating chart:</strong>
+  <%= @course_user.seating_chart %>
+</p>
+
+<%= link_to 'Edit', edit_course_user_path(@course_user) %> |
+<%= link_to 'Back', course_users_path %>

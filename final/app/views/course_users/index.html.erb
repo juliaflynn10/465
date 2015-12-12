@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Course Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Course</th>
+      <th>Course</th>
+      <th>Seating chart</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @course_users.each do |course_user| %>
+      <tr>
+        <td><%= course_user.user_id %></td>
+        <td><%= course_user.course_id %></td>
+        <td><%= course_user.course %></td>
+        <td><%= course_user.seating_chart %></td>
+        <td><%= link_to 'Show', course_user %></td>
+        <td><%= link_to 'Edit', edit_course_user_path(course_user) %></td>
+        <td><%= link_to 'Destroy', course_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Course user', new_course_user_path %>

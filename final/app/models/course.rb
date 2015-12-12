@@ -1,5 +1,6 @@
 class Course < ActiveRecord::Base
-        belongs_to :user
-        has_many :users
-        has_one :seating_chart
+        has_one :seating_chart, dependent: :destroy
+	has_many :course_users
+	belongs_to :user
+	
 end

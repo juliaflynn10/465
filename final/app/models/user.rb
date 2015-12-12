@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
-  has_many :courses
-  has_many :seating_charts, through: :courses
+  has_many :courses, through: :course_users
+  has_many :course_users
 
   before_save :teacher_status
 

@@ -15,6 +15,20 @@ class SeatingChartsController < ApplicationController
   # GET /seating_charts/new
   def new
     @seating_chart = SeatingChart.new
+    @courses = Course.all
+    @course_users = CourseUser.all
+    @users = User.all
+    @seating_chart.seat_count = 0
+
+    CourseUser.all.each do |cu|
+	if cu.course_id == @seating_chart.course_id
+		puts 'AAAAAAAAAAA'
+	
+        end
+    end
+    
+	
+
   end
 
   # GET /seating_charts/1/edit

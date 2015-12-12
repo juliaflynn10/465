@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :course_users
   resources :seating_charts 
   resources :courses
   devise_for :users
