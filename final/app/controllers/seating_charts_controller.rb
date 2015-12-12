@@ -14,16 +14,18 @@ class SeatingChartsController < ApplicationController
 
   # GET /seating_charts/new
   def new
-    @seating_chart = SeatingChart.new
+    @course = Course.find params[:format]
+    @seating_chart = @course.seating_chart
     @courses = Course.all
     @course_users = CourseUser.all
     @users = User.all
-    @seating_chart.seat_count = 0
+    	
 
-    CourseUser.all.each do |cu|
-	if cu.course_id == @seating_chart.course_id
-		puts 'AAAAAAAAAAA'
-	
+    @course.course_users.all.each do |cu|
+	if cu.course_id != nil
+		if cu.course.seating_chart == @seating_chart
+		   puts @course.course_users.size
+		end
         end
     end
     
@@ -38,8 +40,9 @@ class SeatingChartsController < ApplicationController
   # POST /seating_charts
   # POST /seating_charts.json
   def create
-   @seating_chart = SeatingChart.new(seating_chart_params)
-
+   @course = Course.find params[:course_id]
+   @seating_chart = @course.seating_chart.new(seating_chart_params)
+   @seating_chart.seat_count = 0
 
     respond_to do |format|
       if @seating_chart.save

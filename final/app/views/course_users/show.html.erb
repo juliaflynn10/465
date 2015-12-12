@@ -12,13 +12,17 @@
 
 <p>
   <strong>Course:</strong>
-  <%= @course_user.course %>
+  <%= @course_user.course.title %>
 </p>
 
 <p>
   <strong>Seating chart:</strong>
   <%= @course_user.seating_chart %>
 </p>
+
+
+
+
 
 <%= link_to 'Edit', edit_course_user_path(@course_user) %> |
 <%= link_to 'Back', course_users_path %>

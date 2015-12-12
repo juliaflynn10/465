@@ -17,8 +17,9 @@
 
 <p>
   <strong>Course:</strong>
-  <%= @seating_chart.course %>
+  <%= @seating_chart.course.title %>
 </p>
+
 
 <%= link_to 'Edit', edit_seating_chart_path(@seating_chart) %> |
 <%= link_to 'Back', seating_charts_path %>

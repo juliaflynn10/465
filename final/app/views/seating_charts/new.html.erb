@@ -1,6 +1,88 @@
 <h1>New Seating Chart</h1>
 
 <%#= render 'form' %>
+<div class="class-room">
+ <%#= form_for(@seating_chart) do |f|%>
+
+   <% @course.course_users.each do |cu|%>
+
+       <% if cu.course_id != nil%>
+               <% if cu.course.seating_chart == @seating_chart%>
+                   <div class="desk">
+			
+			<p> STUDENT </p>
+		   </div>
+                <%end%>
+        <%end%>
+   <% end%>
+</div>
+
+<% @row = 3 %>
+<% @column = 3 %>
+<% @r=1 %>
+<% @c=1 %>
+
+<% @course_user_list = Array.new %>
+ <% @course.course_users.each do |course_user| %>
+          <% @users.each do |user| %>
+              <% if user.id == course_user.user_id %>
+                <% @course_user_list.push(user) %> 
+              <% end %>
+           <% end %>
+<% end %> 
+
+
+<div class="class-room">
+
+   <% @course.course_users.each do |course_user| %>
+ 	<div class="desk">
+         <%= @r %>,
+         <%= @c %>
+	 <% course_user.row = @r %>
+         <% course_user.column = @c %>
+
+
+         
+<%= form_for(course_user) do |f| %>
+  <div class="field">
+    <%= f.label :row %><br>
+    <%= f.number_field :row  %>
+  </div>
+    <div class="field">
+    <%= f.label :column %><br>
+    <%= f.number_field :column %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.collection_select(:user_id, @course_user_list, :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+        <%= course_user.row %>
+        <%= course_user.column %>
+
+       
+	</div>
+
+       <% if @c == @column && @r <= @row %>
+         <% @r = @r + 1 %>
+         <% @c = 1 %>
+       <% else %>
+         <% @c = @c + 1 %>
+       <% end %>
+
+
+<% end %>
+
+
+
+</div>
+
+
 
 
 

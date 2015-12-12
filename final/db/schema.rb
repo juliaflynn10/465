@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 20151211180045) do
   create_table "course_users", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "course_id"
+    t.integer  "row"
+    t.integer  "column"
     t.integer  "seating_chart_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false

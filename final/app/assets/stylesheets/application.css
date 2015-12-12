@@ -13,3 +13,38 @@
  *= require_tree .
  *= require_self
  */
+
+html, body, p, text, a{
+	font-family: "Verdana", Arial, sans-serif;
+	text-decoration: none;
+}
+
+td, th {
+	padding: 10px;
+}
+
+.cred-input{
+	border: 1px solid #2B2B2B;
+        border-radius: 5px;
+	padding: 10px;
+	margin: 30px auto;
+	position: relative;
+	width: 180px;
+}
+
+.cred-input .field{
+	position: relative;
+}
+
+.cred-input .actions{
+        position: relative;
+}
+
+.cred-input h2{
+        position: relative;
+	width: 180px;
+}
+
+.cred-input div{
+	position:relative;
+}

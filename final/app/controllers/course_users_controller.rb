@@ -1,6 +1,6 @@
 class CourseUsersController < ApplicationController
   before_action :set_course_user, only: [:show, :edit, :update, :destroy]
-  @set = 0
+
   # GET /course_users
   # GET /course_users.json
   def index
@@ -10,6 +10,15 @@ class CourseUsersController < ApplicationController
   # GET /course_users/1
   # GET /course_users/1.json
   def show
+
+	
+	#@course_user.row = params[:row]
+        #@course_user.column = params[:column]	
+
+
+
+
+
   end
 
   # GET /course_users/new
@@ -27,7 +36,9 @@ class CourseUsersController < ApplicationController
                 @course_user.user_id = current_user.id
                 @course.course_users.push(@course_user)
        else
-                @course.course_users.delete(@curr_course_user).compact!
+                @course.course_users.delete(@curr_course_user)
+		#@course.course_users.compact!
+		#CourseUsers.all.drop_if( @curr_course_user == nil )
         end
 
 	redirect_to courses_path
@@ -54,9 +65,12 @@ class CourseUsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /course_users/1
+  # PATCiH/PUT /course_users/1
   # PATCH/PUT /course_users/1.json
   def update
+
+        
+
     respond_to do |format|
       if @course_user.update(course_user_params)
         format.html { redirect_to @course_user, notice: 'Course user was successfully updated.' }
