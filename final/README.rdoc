@@ -1,8 +1,7 @@
 == README
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
-
 
 This app is a portal for students users to sign up for courses, that teacher users have created. All you need to do to get this app and running is to open the app and create accounts for students and teacher. To make a teacher account, enter in "teach" to the "Teacher Code" field in the signup form. After accounts are made, teachers may create courses, view their generated rosters and destroy the course. Students and add and drop courses from the home page.
+
+My final project uses the Devise Gem to make user objects. Each user has many course_users which have courses and has many courses with course_users, which acts like a join table between the two.
