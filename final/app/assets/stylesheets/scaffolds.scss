@@ -1,6 +1,6 @@
 body {
-  background-color: #fff;
-  color: #333;
+  background-color: #E0E0E0;
+  color: #2B2B2B;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -19,26 +19,29 @@ pre {
 }
 
 a {
-  color: #000;
+  color: #598894;
 
   &:visited {
-    color: #666;
+    color: #598894;
   }
 
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: #6EAC65;
+  }
+  
+  &:active{
+    color: #6EAC65;
   }
 }
 
 div {
   &.field, &.actions {
     margin-bottom: 10px;
-  }
+  }	 
 }
 
 #notice {
-  color: green;
+  color: green;	
 }
 
 .field_with_errors {

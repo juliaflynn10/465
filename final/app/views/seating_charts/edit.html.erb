@@ -1,6 +1,48 @@
-<h1>Editing Seating Chart</h1>
 
-<%= render 'form' %>
+<%#= render 'form' %>
+
+<h1>New Seating Chart</h1>
+
+<% @list_of_names = Array.new %>
+<% User.all.each do |user| %>
+   <% @course.course_users.each do |course_user| %>
+   <% if user.id == course_user.user_id %>
+   <% @list_of_names.push(user.name) %>
+   <% end %>
+   <% end %>
+
+
+<% end %>
+
+     <%=  @list_of_names.shuffle! %>
+
+<%= link_to 'Randomize', random_path(:id => @course.id) %>
+
+
+<%#= render 'form' %>
+<div class="class-room">
+ <%#= form_for(@seating_chart) do |f|%>
+   <% @list_of_names.each do |n|%>
+                   <div class="desk">
+                        <p><%= n %> </p>
+                   </div>
+   <% end%>
+</div>
+
+
+
+
+
+
+<%= link_to 'Back', courses_path %>
+~                                       
+
+
+
+
+
+
+
 
 <%= link_to 'Show', @seating_chart %> |
 <%= link_to 'Back', seating_charts_path %>

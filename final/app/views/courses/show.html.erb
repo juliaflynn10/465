@@ -1,14 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @course.title %>
-</p>
+<% @list_of_names = Array.new %>
+<% User.all.each do |user| %>
+   <% @course.course_users.each do |course_user| %>
+   <% if user.id == course_user.user_id %>
+   <% @list_of_names.push(user.name) %>
+   <% end %>
+   <% end %>
+<% end %>
 
-<p>
-  <strong>Size:</strong>
-  <%= @course.size %>
-</p>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<div class="classroom">
+   <h1> Class Roster </h1>
+   <% @list_of_names.each do |n|%>
+                   <div class="desk">
+                        <p><%= n %> </p>
+                   </div>
+   <% end%>
+</div>
+
+

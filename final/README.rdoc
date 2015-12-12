@@ -1,28 +1,8 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+This app is a portal for students users to sign up for courses, that teacher users have created. All you need to do to get this app and running is to open the app and create accounts for students and teacher. To make a teacher account, enter in "teach" to the "Teacher Code" field in the signup form. After accounts are made, teachers may create courses, view their generated rosters and destroy the course. Students and add and drop courses from the home page.

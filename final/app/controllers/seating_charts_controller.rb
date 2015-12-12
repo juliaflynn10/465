@@ -5,12 +5,24 @@ class SeatingChartsController < ApplicationController
   # GET /seating_charts.json
   def index
     @seating_charts = SeatingChart.all
+
   end
 
   # GET /seating_charts/1
   # GET /seating_charts/1.json
   def show
   end
+
+  def random
+ 
+    @course = Course.find(params[:id]) 
+    @course.course_users.shuffle
+    redirect_to courses_path 
+  end
+
+
+
+
 
   # GET /seating_charts/new
   def new
@@ -28,13 +40,19 @@ class SeatingChartsController < ApplicationController
 		end
         end
     end
-    
-	
-
+     	
+    redirect_to edit_seating_chart_path(@course)
   end
 
   # GET /seating_charts/1/edit
   def edit
+    @seating_chart = SeatingChart.find params[:id]
+    #@course = Course.find params[:format]
+    #@seating_chart = @course.seating_chart
+    @courses = Course.all
+    @course_users = CourseUser.all
+    @users = User.all
+
   end
 
   # POST /seating_charts
